@@ -11,11 +11,12 @@ const authorsRouter = require('./routes/authors');
 const app = express();
 // database connection
 const db = require('./helper/db')();
-const config = require('./config');
+require('dotenv').config();
 // middleware
 const verifyToken = require('./middleware/verifyToken');
+
 // global secret key
-app.set('api_secret_key', config.api_secret_key);
+app.set('api_secret_key',  process.env.API_SECRET_KEY);
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

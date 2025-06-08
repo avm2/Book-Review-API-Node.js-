@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 module.exports = () => {
-    mongoose.connect('mongodb+srv://admin:147258369@cluster0.zykf5.mongodb.net/cluster0?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
+    mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
     mongoose.connection.on('open', () => {
         //console.log('Connected successfully');
     });
